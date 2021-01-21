@@ -20,7 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <StyledDiv>
       <Provider store={store}>
-        <App />
+        <App/>
       </Provider>{" "}
     </StyledDiv>
   </React.StrictMode>,

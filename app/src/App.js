@@ -7,17 +7,26 @@ import styled from 'styled-components';
 function App() {
   return (
     <div>
+    <StyledDiv>
       <h1>FFXIV Character Look Up!</h1>
       <p>
         Look up your Characters information by entering your Characters id below
       </p>
       <Form />
-      
-      <CharCard/>
+  </StyledDiv>
+      {/* <CharCard/> */}
     </div>
   );
 }
 
-
+const StyledDiv = styled.div`
+    margin: 3% auto;
+    width: 50%;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+    background-color: #dcdcdc;
+    padding: 2% ;
+  `;
 
 export default App;

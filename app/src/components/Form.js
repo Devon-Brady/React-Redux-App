@@ -4,15 +4,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getCharacter } from "../actions/actions";
 import styled from "styled-components";
+import CharCard from "./CharCard";
 const Form = (props) => {
   const [value, setValue] = useState("");
-  const StyledDiv = styled.div`
-    width: 50%;
-    -webkit-box-shadow: 0 10px 6px -6px #777;
-    -moz-box-shadow: 0 10px 6px -6px #777;
-    box-shadow: 0 10px 6px -6px #777;
-    background-color: #dcdcdc;
-  `;
+  const [showResults, setShowResults] = useState(false);
+  const onClick = () => setShowResults(true);
   const handleChange = (evt) => {
     evt.preventDefault();
     setValue(evt.target.value);
@@ -21,6 +17,8 @@ const Form = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     props.getCharacter(value);
+    setValue("")
+    
 
     //     axios.get(`https://xivapi.com/character/${value}`)
     //     .then((res) => {
@@ -32,20 +30,19 @@ const Form = (props) => {
   };
   return (
     <>
-      <StyledDiv>
-        <form onSubmit={onSubmit}>
-          <label htmlFor="CharId">
-            <input
-              type="text"
-              name="CharId"
-              placeholder="Character Id"
-              onChange={handleChange}
-              value={value}
-            />
-          </label>
-          <button>Look up!</button>
-        </form>
-      </StyledDiv>
+      <form onSubmit={onSubmit}>
+        <label htmlFor="CharId">
+          <input
+            type="text"
+            name="CharId"
+            placeholder="Character Id"
+            onChange={handleChange}
+            value={value}
+          />
+        </label>
+        <input type="submit" value="Look up!" onClick={onClick} />
+        {showResults ? <CharCard /> : null}
+      </form>
     </>
   );
 };
